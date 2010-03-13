@@ -18,8 +18,9 @@
 
 use strict;
 use warnings;
+use Getopt::Long;
 
-our ($t_def, $t_med, $f_big, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,
+our ($t_def, $t_med, $f_big, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,   
      $pcms2, $prgy1, $prgy2, $prgy3, $prgy4, $prgy5, $prgy6, $prgy7, $prfsl,
      $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl);
 $t_def = "\033]50;-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*\007";
@@ -66,6 +67,37 @@ my %fonts = ('terminus1' =>  $t_def,
              'speedy1'   =>  $spdy1,
              'speedy2'   =>  $spdy2,
              );
+
+our ($font, $help);
+GetOptions('f=s'  => \$font,
+           'h'    =>  \$help,
+           );
+if($font) {
+  print &setfont($font);
+  exit 0;
+}
+if($help) {
+  print << "HELP";
+  USAGE: $0 [OPTIONS]
+  -f  set font without calling the interactive font-chooser
+  -h  help
+HELP
+
+exit 0;
+}
+
+sub setfont {
+  my $font = shift;
+  chomp($font);
+  for my $key(keys(%fonts)) {
+    if($key =~ /$font/) {
+      return $fonts{$font};
+    }
+  }
+  exit 0;
+}
+
+
 
 print "\033[31;1m PICK YOUR FONT\033[0m\n";
 foreach my $fontname(sort(keys(%fonts))) {
