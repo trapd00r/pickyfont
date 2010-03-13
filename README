@@ -1,0 +1,8 @@
+I'm getting old. 
+My old, default for a very long time, beloved terminus font doesn't cut it
+anymore where I really need to see what I'm doing.
+Programming is such a task, when I need to see what I do. I still use the small
+terminus font in all other shells, but I wanted a slightly bigger one in vim.
+
+I found no easy way of changing the console font on the fly, so I came up with
+this. Feel free to suggest other 'programming' fonts that rocks!
