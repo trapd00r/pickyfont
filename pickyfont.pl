@@ -22,7 +22,8 @@ use Getopt::Long;
 
 our ($t_def, $t_med, $f_big, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,   
      $pcms2, $prgy1, $prgy2, $prgy3, $prgy4, $prgy5, $prgy6, $prgy7, $prfsl,
-     $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl);
+     $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl, $envyr, $inco1, $inco2, $clea1,
+     $clea2, $clea3, $clea4, $clea5, $clea6);
 $t_def = "\033]50;-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*\007";
 $t_med = "\033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007";
 $f_big = "\033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007";
@@ -44,6 +45,15 @@ $prgy7 = "\033]50;-*-proggytiny-*-*-*-*-10-*-*-*-*-*-*-*\007";
 $prgsl = "\033]50;-*-progsole-*-*-*-*-10-*-*-*-*-*-*-*\007";
 $spdy1 = "\033]50;-*-speedy-*-*-*-*-11-*-*-*-*-*-*-*\007";
 $spdy2 = "\033]50;-*-speedy-*-*-*-*-12-*-*-*-*-*-*-*\007";
+$envyr = "\033]50;-*-envy code r-*-*-*-*-17-*-*-*-m-0-*-*\007";
+$inco1 = "\033]50;-*-inconsolata-*-*-*-*-*-*-*-*-*-*-*-*\007";
+$inco2 = "\033]50;-*-inconsolata g-*-*-*-*-*-*-*-*-*-*-*-*\007";
+$clea1 = "\033]50;-*-clean-*-*-normal-*-10-*-*-*-*-*-*-*\007";
+$clea2 = "\033]50;-*-clean-*-*-normal-*-12-*-*-*-*-*-*-*\007";
+$clea3 = "\033]50;-*-clean-*-*-normal-*-13-*-*-*-*-*-*-*\007";
+$clea4 = "\033]50;-*-clean-*-*-normal-*-14-*-*-*-*-*-*-*\007";
+$clea5 = "\033]50;-*-clean-*-*-normal-*-15-*-*-*-*-*-*-*\007";
+$clea6 = "\033]50;-*-clean-*-*-normal-*-16-*-*-*-*-*-*-*\007";
 
 my %fonts = ('terminus1' =>  $t_def,
              'terminus2' =>  $t_med,
@@ -66,6 +76,16 @@ my %fonts = ('terminus1' =>  $t_def,
              'progsole'  =>  $prgsl,
              'speedy1'   =>  $spdy1,
              'speedy2'   =>  $spdy2,
+             'envyr'     =>  $envyr,
+             'inco1'     =>  $inco1,
+             'inco2'     =>  $inco2,
+             'clea1'     =>  $clea1,
+             'clea2'     =>  $clea2,
+             'clea3'     =>  $clea3,
+             'clea4'     =>  $clea4,
+             'clea5'     =>  $clea5,
+             'clea6'     =>  $clea6,
+
              );
 
 our ($font, $help);
@@ -96,7 +116,6 @@ sub setfont {
   }
   exit 0;
 }
-
 
 
 print "\033[31;1m PICK YOUR FONT\033[0m\n";
