@@ -15,18 +15,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-
 use strict;
 use warnings;
 use Getopt::Long;
 
-our ($t_def, $t_med, $f_big, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,   
+our ($t_def, $t_med, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,   
      $pcms2, $prgy1, $prgy2, $prgy3, $prgy4, $prgy5, $prgy6, $prgy7, $prfsl,
      $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl, $envyr, $inco1, $inco2, $clea1,
-     $clea2, $clea3, $clea4, $clea5, $clea6);
+     $clea2, $clea3, $clea4, $clea5, $clea6, $fixd1, $fixd2, $fixd3, $fixd4,
+     $fixd5, $fixd6, $fixd7, $fixd8);
 $t_def = "\033]50;-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*\007";
-$t_med = "\033]50;-*-terminus-*-*-*-*-12-*-72-72-*-*-*-*\007";
-$f_big = "\033]50;-misc-fixed-medium-r-normal-*-*-150-*-*-c-*-iso8859-15\007";
+$t_med = "\033]50;-*-terminus-*-*-*-*-*-140-*-*-*-*-*-*\007";
 $p_sml = "\033]50;-*-profont-medium-*-normal-*-10-*-*-*-*-*-*-*\007";
 $p_med = "\033]50;-*-profont-*-*-*-*-11-*-*-*-*-*-*-*\007";
 $p_big = "\033]50;-*-profont-*-*-*-*-12-*-*-*-*-*-*-*\007";
@@ -54,10 +53,17 @@ $clea3 = "\033]50;-*-clean-*-*-normal-*-13-*-*-*-*-*-*-*\007";
 $clea4 = "\033]50;-*-clean-*-*-normal-*-14-*-*-*-*-*-*-*\007";
 $clea5 = "\033]50;-*-clean-*-*-normal-*-15-*-*-*-*-*-*-*\007";
 $clea6 = "\033]50;-*-clean-*-*-normal-*-16-*-*-*-*-*-*-*\007";
+$fixd1 = "\033]50;-*-fixed-*-*-*-*-6-*-*-*-*-*-*-*\007";
+$fixd2 = "\033]50;-*-fixed-*-*-*-*-7-*-*-*-*-*-*-*\007";
+$fixd3 = "\033]50;-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*\007";
+$fixd4 = "\033]50;-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*\007";
+$fixd5 = "\033]50;-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*\007";
+$fixd6 = "\033]50;-*-fixed-*-*-*-*-13-*-*-*-*-*-*-*\007";
+$fixd7 = "\033]50;-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*\007";
+$fixd8 = "\033]50;-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*\007";
 
 my %fonts = ('terminus1' =>  $t_def,
              'terminus2' =>  $t_med,
-             'fixed'     =>  $f_big,
              'profont1'  =>  $p_sml,
              'profont2'  =>  $p_med,
              'profont3'  =>  $p_big,
@@ -85,12 +91,19 @@ my %fonts = ('terminus1' =>  $t_def,
              'clea4'     =>  $clea4,
              'clea5'     =>  $clea5,
              'clea6'     =>  $clea6,
-
+             'fixed1'    =>  $fixd1,
+             'fixed2'    =>  $fixd2,
+             'fixed3'    =>  $fixd3,
+             'fixed4'    =>  $fixd4,
+             'fixed5'    =>  $fixd5,
+             'fixed6'    =>  $fixd6,
+             'fixed7'    =>  $fixd7,
+             'fixed8'    =>  $fixd8,
              );
 
 our ($font, $help);
 GetOptions('f=s'  => \$font,
-           'h'    =>  \$help,
+           'h'    => \$help,
            );
 if($font) {
   print &setfont($font);
@@ -117,12 +130,18 @@ sub setfont {
   exit 0;
 }
 
-
-print "\033[31;1m PICK YOUR FONT\033[0m\n";
+my $i = 0;
+printf("\033[31m%16s\033[0m\n", 'PICK FONT');
 foreach my $fontname(sort(keys(%fonts))) {
-  print $fontname, "\n"
+  ++$i;
+  if(0==$i%2) {
+    printf("%10s", $fontname);
+  }
+  else {
+    printf("%10s\n", $fontname);
+  }
 }
-print "\nThe recommended font for everyday use is terminus1. \n";
+print "\nThe recommended font for everyday use is terminus1 or fixed6. \n";
 
 print "Font: ";
 my $choice = <STDIN>;
