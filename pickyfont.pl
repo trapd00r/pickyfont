@@ -16,7 +16,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use strict;
-use warnings;
 use Getopt::Long;
 
 our ($t_def, $t_med, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,   
@@ -24,43 +23,43 @@ our ($t_def, $t_med, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,
      $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl, $envyr, $inco1, $inco2, $clea1,
      $clea2, $clea3, $clea4, $clea5, $clea6, $fixd1, $fixd2, $fixd3, $fixd4,
      $fixd5, $fixd6, $fixd7, $fixd8);
-$t_def = "\033]50;-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*\007";
-$t_med = "\033]50;-*-terminus-*-*-*-*-*-140-*-*-*-*-*-*\007";
-$p_sml = "\033]50;-*-profont-medium-*-normal-*-10-*-*-*-*-*-*-*\007";
-$p_med = "\033]50;-*-profont-*-*-*-*-11-*-*-*-*-*-*-*\007";
-$p_big = "\033]50;-*-profont-*-*-*-*-12-*-*-*-*-*-*-*\007";
-$p_lrg = "\033]50;-*-profont-*-*-*-*-15-*-*-*-*-*-*-*\007";
-$p_hge = "\033]50;-*-profont-*-*-*-*-17-*-*-*-*-*-*-*\007";
-$cfobi = "\033]50;-*-codingfonttobi-*-*-*-*-*-*-*-*-*-*-*-*\007";
-$pcms1 = "\033]50;-*-pixelcarnage monospace-*-*-*-*-14-*-*-*-*-*-*-*\007";
-$pcms2 = "\033]50;-*-pixelcarnage monospace-*-*-*-*-17-*-*-*-*-*-*-*\007";
-$prgy1 = "\033]50;-*-proggyclean-*-*-*-*-13-*-*-*-*-*-*-*\007";
-$prgy2 = "\033]50;-*-proggycleancp-*-*-*-*-13-*-*-*-*-*-*-*\007";
-$prgy3 = "\033]50;-*-proggycleansz-*-*-*-*-13-*-*-*-*-*-*-*\007";
-$prgy4 = "\033]50;-*-proggyopti-*-*-*-*-11-*-*-*-*-*-*-*\007";
-$prgy5 = "\033]50;-*-proggyoptis-*-*-*-*-*-*-*-*-*-*-*-*\007";
-$prgy6 = "\033]50;-*-proggysquare-*-*-*-*-11-*-*-*-*-*-*-*\007";
-$prgy7 = "\033]50;-*-proggytiny-*-*-*-*-10-*-*-*-*-*-*-*\007";
-$prgsl = "\033]50;-*-progsole-*-*-*-*-10-*-*-*-*-*-*-*\007";
-$spdy1 = "\033]50;-*-speedy-*-*-*-*-11-*-*-*-*-*-*-*\007";
-$spdy2 = "\033]50;-*-speedy-*-*-*-*-12-*-*-*-*-*-*-*\007";
-$envyr = "\033]50;-*-envy code r-*-*-*-*-17-*-*-*-m-0-*-*\007";
-$inco1 = "\033]50;-*-inconsolata-*-*-*-*-*-*-*-*-*-*-*-*\007";
-$inco2 = "\033]50;-*-inconsolata g-*-*-*-*-*-*-*-*-*-*-*-*\007";
-$clea1 = "\033]50;-*-clean-*-*-normal-*-10-*-*-*-*-*-*-*\007";
-$clea2 = "\033]50;-*-clean-*-*-normal-*-12-*-*-*-*-*-*-*\007";
-$clea3 = "\033]50;-*-clean-*-*-normal-*-13-*-*-*-*-*-*-*\007";
-$clea4 = "\033]50;-*-clean-*-*-normal-*-14-*-*-*-*-*-*-*\007";
-$clea5 = "\033]50;-*-clean-*-*-normal-*-15-*-*-*-*-*-*-*\007";
-$clea6 = "\033]50;-*-clean-*-*-normal-*-16-*-*-*-*-*-*-*\007";
-$fixd1 = "\033]50;-*-fixed-*-*-*-*-6-*-*-*-*-*-*-*\007";
-$fixd2 = "\033]50;-*-fixed-*-*-*-*-7-*-*-*-*-*-*-*\007";
-$fixd3 = "\033]50;-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*\007";
-$fixd4 = "\033]50;-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*\007";
-$fixd5 = "\033]50;-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*\007";
-$fixd6 = "\033]50;-*-fixed-*-*-*-*-13-*-*-*-*-*-*-*\007";
-$fixd7 = "\033]50;-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*\007";
-$fixd8 = "\033]50;-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*\007";
+$t_def = "-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*";
+$t_med = "-*-terminus-*-*-*-*-*-140-*-*-*-*-*-*";
+$p_sml = "-*-profont-medium-*-normal-*-10-*-*-*-*-*-*-*";
+$p_med = "-*-profont-*-*-*-*-11-*-*-*-*-*-*-*";
+$p_big = "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*";
+$p_lrg = "-*-profont-*-*-*-*-15-*-*-*-*-*-*-*";
+$p_hge = "-*-profont-*-*-*-*-17-*-*-*-*-*-*-*";
+$cfobi = "-*-codingfonttobi-*-*-*-*-*-*-*-*-*-*-*-*";
+$pcms1 = "-*-pixelcarnage monospace-*-*-*-*-14-*-*-*-*-*-*-*";
+$pcms2 = "-*-pixelcarnage monospace-*-*-*-*-17-*-*-*-*-*-*-*";
+$prgy1 = "-*-proggyclean-*-*-*-*-13-*-*-*-*-*-*-*";
+$prgy2 = "-*-proggycleancp-*-*-*-*-13-*-*-*-*-*-*-*";
+$prgy3 = "-*-proggycleansz-*-*-*-*-13-*-*-*-*-*-*-*";
+$prgy4 = "-*-proggyopti-*-*-*-*-11-*-*-*-*-*-*-*";
+$prgy5 = "-*-proggyoptis-*-*-*-*-*-*-*-*-*-*-*-*";
+$prgy6 = "-*-proggysquare-*-*-*-*-11-*-*-*-*-*-*-*";
+$prgy7 = "-*-proggytiny-*-*-*-*-10-*-*-*-*-*-*-*";
+$prgsl = "-*-progsole-*-*-*-*-10-*-*-*-*-*-*-*";
+$spdy1 = "-*-speedy-*-*-*-*-11-*-*-*-*-*-*-*";
+$spdy2 = "-*-speedy-*-*-*-*-12-*-*-*-*-*-*-*";
+$envyr = "-misc-envy code r-bold-r-normal--0-0-0-0-m-0-iso8859-1";
+$inco1 = "-*-inconsolata-*-*-*-*-*-*-*-*-*-*-*-*";
+$inco2 = "-*-inconsolata g-*-*-*-*-*-*-*-*-*-*-*-*";
+$clea1 = "-*-clean-*-*-normal-*-10-*-*-*-*-*-*-*";
+$clea2 = "-*-clean-*-*-normal-*-12-*-*-*-*-*-*-*";
+$clea3 = "-*-clean-*-*-normal-*-13-*-*-*-*-*-*-*";
+$clea4 = "-*-clean-*-*-normal-*-14-*-*-*-*-*-*-*";
+$clea5 = "-*-clean-*-*-normal-*-15-*-*-*-*-*-*-*";
+$clea6 = "-*-clean-*-*-normal-*-16-*-*-*-*-*-*-*";
+$fixd1 = "-*-fixed-*-*-*-*-6-*-*-*-*-*-*-*";
+$fixd2 = "-*-fixed-*-*-*-*-7-*-*-*-*-*-*-*";
+$fixd3 = "-*-fixed-*-*-*-*-9-*-*-*-*-*-*-*";
+$fixd4 = "-*-fixed-*-*-*-*-10-*-*-*-*-*-*-*";
+$fixd5 = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*";
+$fixd6 = "-*-fixed-*-*-*-*-13-*-*-*-*-*-*-*";
+$fixd7 = "-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*";
+$fixd8 = "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*";
 
 my %fonts = ('terminus1' =>  $t_def,
              'terminus2' =>  $t_med,
@@ -149,6 +148,8 @@ chomp($choice);
 
 for my $key(keys(%fonts)) {
   if($key =~ /$choice/) {
-    printf $fonts{$choice};
+    printf("\e]710;%s\007", $fonts{$choice});
+    printf("\e]711;%s\007", $fonts{$choice});
+    printf("\e]712;%s\007", $fonts{$choice});
   }
 }
