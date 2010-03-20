@@ -105,8 +105,7 @@ GetOptions('f=s'  => \$font,
            'h'    => \$help,
            );
 if($font) {
-  print &setfont($font);
-  exit 0;
+  &setfont($font);
 }
 if($help) {
   print << "HELP";
@@ -123,7 +122,9 @@ sub setfont {
   chomp($font);
   for my $key(keys(%fonts)) {
     if($key =~ /$font/) {
-      return $fonts{$font};
+      printf("\e]710;%s\007", $fonts{$font});
+      printf("\e]711;%s\007", $fonts{$font});
+      printf("\e]712;%s\007", $fonts{$font});
     }
   }
   exit 0;
