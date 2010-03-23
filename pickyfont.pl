@@ -22,7 +22,7 @@ our ($t_def, $t_med, $p_sml, $p_med, $p_big, $crisp, $cfobi, $pcms1,
      $pcms2, $prgy1, $prgy2, $prgy3, $prgy4, $prgy5, $prgy6, $prgy7, $prfsl,
      $spdy1, $spdy2, $p_lrg, $p_hge, $prgsl, $envyr, $inco1, $inco2, $clea1,
      $clea2, $clea3, $clea4, $clea5, $clea6, $fixd1, $fixd2, $fixd3, $fixd4,
-     $fixd5, $fixd6, $fixd7, $fixd8);
+     $fixd5, $fixd6, $fixd7, $fixd8, $dina1);
 $t_def = "-*-terminus-medium-*-normal-*-*-*-72-72-c-*-*-*";
 $t_med = "-*-terminus-*-*-*-*-*-140-*-*-*-*-*-*";
 $p_sml = "-*-profont-medium-*-normal-*-10-*-*-*-*-*-*-*";
@@ -60,6 +60,7 @@ $fixd5 = "-*-fixed-*-*-*-*-12-*-*-*-*-*-*-*";
 $fixd6 = "-*-fixed-*-*-*-*-13-*-*-*-*-*-*-*";
 $fixd7 = "-*-fixed-*-*-*-*-14-*-*-*-*-*-*-*";
 $fixd8 = "-*-fixed-*-*-*-*-15-*-*-*-*-*-*-*";
+$dina1 = "-*-dina-medium-r-*-*-13-*-*-*-*-*-*-*";
 
 my %fonts = ('terminus1' =>  $t_def,
              'terminus2' =>  $t_med,
@@ -98,6 +99,7 @@ my %fonts = ('terminus1' =>  $t_def,
              'fixed6'    =>  $fixd6,
              'fixed7'    =>  $fixd7,
              'fixed8'    =>  $fixd8,
+             'dina1'     =>  $dina1,
              );
 
 our ($font, $help);
