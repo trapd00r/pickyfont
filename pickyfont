@@ -28,6 +28,8 @@ my $opts = {
   set   => sub {setfont($arg); exit 0;},
 };
 
+$opts->{list}->() if !$action;
+
 defined $opts->{$action} && $opts->{$action}->()
   or usage();
 
