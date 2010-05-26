@@ -23,20 +23,22 @@ use Picky::Fonts qw(getfonts setfont);
 my $action = shift;
 my $arg    = shift;
 
+
 my $opts = {
-  list  => sub {getfonts();exit 0;},
-  set   => sub {setfont($arg); exit 0;},
+  list      => sub {getfonts();},
+  set       => sub {setfont($arg); exit 0;},
+  help      => sub {usage(); exit 0},
+  '--help'  => sub {usage(); exit 0},
 };
 
 $opts->{list}->() if !$action;
 
-defined $opts->{$action} && $opts->{$action}->()
-  or usage();
+defined $opts->{$action} and $opts->{$action}->();
 
 sub usage {
   print << "USAGE";
   $APP $VERSION
-  USAGE: $0 OPTIONS
+  USAGE: $APP OPTIONS
 
   OPTIONS
     list  list available fonts
