@@ -22,6 +22,7 @@ sub setfont {
   printf("\033]710;%s\007", $fontstr);
   printf("\033]711;%s\007", $fontstr);
   printf("\033]712;%s\007", $fontstr);
+#  printf("\033]713;%s\007", $fontstr);
 }
 
 
@@ -61,10 +62,6 @@ our %fonts = (
   pro1    => {
     name  => 'Profont Medium Normal         [ 10px ] (72-72-c-50)',
     font  => '-nil-profont-medium-r-normal--10-100-72-72-c-50-iso8859-1',
-  },
-  pro2    => {
-    name  => 'Profont Medium Normal         [ 11px ] (72-72-c-60)',
-    font  => '-nil-profont-medium-r-normal--11-110-72-72-c-60-iso8859-1',
   },
   pro3    => {
     name  => 'Profont Medium Normal         [ 12px ] (72-72-c-60)',
