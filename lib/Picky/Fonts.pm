@@ -17,12 +17,14 @@ sub getfonts {
 
 sub setfont {
   my $font = shift;
+  return unless $font;
   chomp($font);
   my $fontstr = $fonts{$font}{font};
+  return unless defined($fonts{$font}{font});
   printf("\033]710;%s\007", $fontstr);
   printf("\033]711;%s\007", $fontstr);
   printf("\033]712;%s\007", $fontstr);
-#  printf("\033]713;%s\007", $fontstr);
+  #printf("\033]713;%s\007", $fontstr);
 }
 
 
