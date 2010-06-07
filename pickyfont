@@ -31,9 +31,19 @@ my $opts = {
   '--help'  => sub {usage(); exit 0},
 };
 
+# Hereby the 'set' argument isn't necessary
+# setfont() will return if it's not a legal font
+if(defined($action)) {
+  if($action !~ /^(:?list|set|.?.?help)$/) {
+    setfont($action);
+  }
+}
+
+            
+
 $opts->{list}->() if !$action;
 
-defined $opts->{$action} and $opts->{$action}->();
+defined $opts->{$action} && $opts->{$action}->();
 
 sub usage {
   print << "USAGE";
