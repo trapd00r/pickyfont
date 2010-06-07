@@ -3,8 +3,6 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(setfont getfonts);
 
-
-
 sub getfonts {
   my %h = ();
   for my $shortname(keys( %fonts)) {
@@ -237,6 +235,38 @@ our %fonts = (
   '6x13b' => {
     name  => '6x13 Bold                     [CONSOLE]',
     font  => '6x13bold',
+  },
+  'luco1' => {
+    name  => 'Lucida ConsoleP               [10px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=10:antialias=0',
+  },
+  'luco2' => {
+    name  => 'Lucida ConsoleP               [11px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=11:antialias=0',
+  },
+  'luco3' => {
+    name  => 'Lucida ConsoleP               [12px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=12:antialias=0',
+  },
+  'luco4' => {
+    name  => 'Lucida ConsoleP               [13px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=13:antialias=0',
+  },
+  'luco5' => {
+    name  => 'Lucida ConsoleP               [14px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=14:antialias=0',
+  },
+  'luco6' => {
+    name  => 'Lucida ConsoleP               [15px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=15:antialias=0',
+  },
+  'luco7' => {
+    name  => 'Lucida ConsoleP               [16px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=16:antialias=0',
+  },
+  'luco8' => {
+    name  => 'Lucida ConsoleP               [17px] [XFT]',
+    font  => 'xft:Lucida ConsoleP:pixelsize=17:antialias=0',
   },
   fixed1  => {
     name  => 'Fixed Medium Normal           [ 10px ] (75-75-c-60)',
