@@ -18,15 +18,15 @@ my $VERSION = 0.3;
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use strict;
+use Data::Dumper;
 use Picky::Fonts qw(getfonts setfont);
 
-my $action = shift;
-my $arg    = shift;
-
+my ($action, $font, $typeface) = @ARGV;
+$typeface = 'all' unless $typeface; # set normal,bold,italic to same font
 
 my $opts = {
   list      => sub {getfonts();},
-  set       => sub {setfont($arg); exit 0;},
+  set       => sub {setfont($font, $typeface); exit 0;},
   help      => sub {usage(); exit 0},
   '--help'  => sub {usage(); exit 0},
 };
@@ -35,7 +35,7 @@ my $opts = {
 # setfont() will return if it's not a legal font
 if(defined($action)) {
   if($action !~ /^(:?list|set|.?.?help)$/) {
-    setfont($action);
+    setfont($action, $font);
   }
 }
 
@@ -50,7 +50,9 @@ sub usage {
 
   OPTIONS
     list  list available fonts
-    set   set font
+    set   font (typeface)
+
+    Typeface can be normal, bold, italic or all
 USAGE
   exit 0;
 }

@@ -3,6 +3,8 @@ require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(setfont getfonts);
 
+use Data::Dumper;
+
 sub getfonts {
   my %h = ();
   for my $shortname(keys( %fonts)) {
@@ -15,16 +17,27 @@ sub getfonts {
 
 sub setfont {
   my $font = shift;
-  return unless $font;
-  chomp($font);
+  my $face = shift;
+  return 1 unless $font;
+
   my $fontstr = $fonts{$font}{font};
-  return unless defined($fonts{$font}{font});
-  printf("\033]710;%s\007", $fontstr);
-  printf("\033]711;%s\007", $fontstr);
-  printf("\033]712;%s\007", $fontstr);
-  #printf("\033]713;%s\007", $fontstr);
+  return 1 unless defined($fonts{$font}{font});
+
+  if(defined($faces{$face})) {
+    printf("\033]$faces{$face};%s\007", $fontstr);
+  }
+  else {
+    printf("\033]710;%s\007", $fontstr);
+    printf("\033]711;%s\007", $fontstr);
+    printf("\033]712;%s\007", $fontstr);
+  }
 }
 
+our %faces = (
+  normal  => 710,
+  bold    => 711,
+  italic  => 712,
+);
 
 our %fonts = (
   ter1    => {
