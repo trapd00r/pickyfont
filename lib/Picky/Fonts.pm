@@ -20,6 +20,16 @@ sub setfont {
   my $face = shift;
   return 1 unless $font;
 
+  if(defined($fonts{$font}{font})) {
+    $fontstr = $fonts{$font}{font};
+  }
+  else { # The user might have supplied an arbitary font, lets try setting it
+    printf("\033]710;%s\007", $font);
+    printf("\033]711;%s\007", $font);
+    printf("\033]712;%s\007", $font);
+    return 0;
+  }
+
   my $fontstr = $fonts{$font}{font};
   return 1 unless defined($fonts{$font}{font});
 
