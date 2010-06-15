@@ -31,6 +31,17 @@ my $opts = {
   '--help'  => sub {usage(); exit 0},
 };
 
+# Due to how setfont() works, this is really not necessary
+# If the font provided to getfont() isnt defined, it'll be evaluated as
+# a arbitary font.
+# If the font is invalid, nothing will happen
+if($action eq 'arb') {
+  chomp($font);
+  $opts->{set}->();
+  exit 0;
+}
+
+
 # Hereby the 'set' argument isn't necessary
 # setfont() will return if it's not a legal font
 if(defined($action)) {
@@ -51,8 +62,15 @@ sub usage {
   OPTIONS
     list  list available fonts
     set   font (typeface)
+    arb   set font to arbitary string, see below
 
     Typeface can be normal, bold, italic or all
+
+    You can specify arbitary font to use, like so:
+      pickyfont arb lucidasanstypewriter-bold-24
+    The 'arb' flag is optional:
+      pickyfont 8x13
+    is valid as well
 USAGE
   exit 0;
 }
