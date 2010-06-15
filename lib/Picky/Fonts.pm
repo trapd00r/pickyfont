@@ -335,5 +335,13 @@ our %fonts = (
     name  => 'Fixed Medium Normal           [ 9px  ] (75-75-c-60)',
     font  => '-misc-fixed-medium-r-normal--9-90-75-75-c-60-koi8-r',
   },
+  monte1  => {
+    name  => 'Monte Carlo Medium            [ 11px ] (72-72-c-60)',
+    font  => '-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252',
+  },
+  monte2  => {
+    name  => 'Monte Carlo Bold              [ 11px ] (72-72-c-60)',
+    font  => '-windows-montecarlo-bold-r-normal--11-110-72-72-c-60-microsoft-cp1252',
+  },
 );
 
