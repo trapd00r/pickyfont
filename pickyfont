@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 my $APP = 'pickyfont';
-my $VERSION = 0.3;
+my $VERSION = 0.4;
 # pickyfont - Pick Your Font... on the fly
 # Copyright (C) 2010 Magnus Woldrich <trapd00r@trapd00r.se>
 #
