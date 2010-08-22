@@ -76,9 +76,11 @@ Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
 
 =head1 OPTIONS
 
-  set   set font, and optionally, typeface
-  list  list available fonts
-  arb   set font to an arbitary string
+  set     set font, and optionally, typeface
+  list    list available fonts
+  arb     set font to an arbitary string
+  help    show help and exit
+  man     show the manual
 
 =head2 Typeface
 
