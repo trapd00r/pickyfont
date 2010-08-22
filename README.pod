@@ -40,16 +40,12 @@ Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
 
   Typeface can be any of normal, bold, italic, or simply 'all'
 
-=back
-
 =head2  Arbitary fonts
 
   You can specifiy arbitary fonts using the following syntax:
 
   pickyfont lucidasanstypewriter-bold-24
   pickyfont 8x13
-
-=back
 
 =head1 CAVEATS
 
