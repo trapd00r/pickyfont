@@ -1,0 +1,100 @@
+NAME
+      pickyfont - Change terminal font on the fly
+
+DESCRIPTION
+    pickyfont lets you change your X-terminal font on the fly, just like
+    setfont can do in a TTY.
+
+    Normal, bold and italic fontfaces are supported, as well as XFT fonts.
+
+    Since the italic face does not look good in a terminal, you could use a
+    different font that will be used when the terminal wants to print data
+    in italic.
+
+    There are some very good fonts that sadly does not provide a boldface,
+    and you can solve this problem by simply doing the same thing here.
+
+    The author highly recommends 'monte1' for normal text, 'monte2' for bold
+    and 'pro1' for italic. Looks really good.
+
+    Another use is when you want to show some data to a couple of friends
+    standing around your computer, or have the music playlist open, they'll
+    most likely not see anything at all since you are using a small font
+    suitable for one pair of eyes only.
+
+    Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
+
+
+OPTIONS
+      set     set font, and optionally, typeface
+      list    list available fonts
+      arb     set font to an arbitary string
+      help    show help and exit
+      man     show the manual
+
+  Typeface
+      Typeface can be any of normal, bold, italic, or simply 'all'
+
+  Arbitary fonts
+      You can specifiy arbitary fonts using the following syntax:
+
+      pickyfont lucidasanstypewriter-bold-24
+      pickyfont 8x13
+
+CAVEATS
+    There is no reliable way to get friendly font names from the X.org
+    server. One could parse the output from xlsfonts, but that output could
+    be insanely long and will only show the raw names and several duplicates
+    as well.
+
+    Therefore I see no other way then to keeping a (configuration)? file
+    with more or less standard font mappings that most people would (in many
+    cases, should) have installed, and let them pick from that.
+
+    Please send me an e-mail if there's a better way of doing this.
+
+FONT RECOMMENDATIONS
+    The Terminus font is excellent, comes with a pcf version for the TTY and
+    several sizes. The smallest pixelsize available is 12pt, which is a bit
+    to big for me though, and there's no boldface unless you pump the size
+    up to 14.
+
+    The Profont font is excellent as well, and when you're used to it, it's
+    even more readable. No boldface here at all.
+
+    The Monte Carlo font is awesome. It comes with just one size, but
+    there's a bold version that works really well. This is what the author
+    uses everyday.
+
+    Other then that, there are some more or less good programming fonts in
+    the artwiz packages that you might like more.
+
+    There's also only one font that supports all of codepage 437 - The
+    Lucida Console Pro. Not recommended for coding, though.
+
+AUTHOR
+    Written by Magnus Woldrich.
+
+REPORTING BUGS
+    Report bugs to trapd00r\@trapd00r.se
+
+    pickyfont homepage: http://github.com/trapd00r/pickyfont
+
+COPYRIGHT
+    Copyright 2010 Magnus Woldrich.
+
+    License: GPLv2.
+
+SEE ALSO
+    xlsfonts(1)
+
+POD ERRORS
+    Hey! The above document had some coding errors, which are explained
+    below:
+
+    Around line 89:
+        =back without =over
+
+    Around line 98:
+        =back without =over
+
