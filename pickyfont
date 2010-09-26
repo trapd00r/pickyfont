@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 our $APP     = 'pickyfont';
-our $VERSION = 0.4;
+our $VERSION = '0.4';
 
 use strict;
 use Data::Dumper;
@@ -67,7 +67,7 @@ The author highly recommends 'monte1' for normal text, 'monte2' for bold and
 
 Another use is when you want to show some data to a couple of friends standing
 around your computer, or have the music playlist open,  they'll most likely
-not see anything at all since you are using a small font suitable for one 
+not see anything at all since you are using a small font suitable for one
 pair of eyes only.
 
 Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
@@ -85,6 +85,14 @@ Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
 =head2 Typeface
 
   Typeface can be any of normal, bold, italic, or simply 'all'
+
+=head3 Examples
+
+This is what the author prefers.
+
+  pickyfont set monte1 normal
+  pickyfont set monte2 bold
+  pickyfont set pro1   italic
 
 =back
 
