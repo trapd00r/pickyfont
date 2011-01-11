@@ -1,12 +1,16 @@
+#!/usr/bin/perl
 package Picky::Fonts;
 require Exporter;
 @ISA = qw(Exporter);
 @EXPORT_OK = qw(setfont getfonts);
 
-use Data::Dumper;
+use strict;
+#use Data::Dumper;
+
+our(%fonts, %faces);
 
 sub getfonts {
-  my %h = ();
+  my %h;
   for my $shortname(keys( %fonts)) {
     $h{$fonts{$shortname}{name}} = $shortname;
   }
@@ -16,40 +20,41 @@ sub getfonts {
 }
 
 sub setfont {
-  my $font = shift;
-  my $face = shift;
-  return 1 unless $font;
+  my($font, $face) = @_;
 
-  if(defined($fonts{$font}{font})) {
-    $fontstr = $fonts{$font}{font};
+  if(!defined($font)) {
+    croak("Font not specified!");
+  }
+
+  my $font_str;
+  if(exists($fonts{$font}{font})) {
+    $font_str = $fonts{$font}{font};
   }
   else { # The user might have supplied an arbitary font, lets try setting it
+    # \e is a GNU thing.
     printf("\033]710;%s\007", $font);
     printf("\033]711;%s\007", $font);
     printf("\033]712;%s\007", $font);
     return 0;
   }
 
-  my $fontstr = $fonts{$font}{font};
-  return 1 unless defined($fonts{$font}{font});
-
-  if(defined($faces{$face})) {
-    printf("\033]$faces{$face};%s\007", $fontstr);
+  if(exists($faces{$face})) {
+    printf("\033]$faces{$face};%s\007", $font_str);
   }
   else {
-    printf("\033]710;%s\007", $fontstr);
-    printf("\033]711;%s\007", $fontstr);
-    printf("\033]712;%s\007", $fontstr);
+    printf("\033]710;%s\007", $font_str);
+    printf("\033]711;%s\007", $font_str);
+    printf("\033]712;%s\007", $font_str);
   }
 }
 
-our %faces = (
+%faces = (
   normal  => 710,
   bold    => 711,
   italic  => 712,
 );
 
-our %fonts = (
+%fonts = (
   ter1    => {
     name  => 'Terminus Normal               [ 12px ] (72-72-c-60)',
     font  => '-xos4-terminus-bold-r-normal--12-120-72-72-c-60-koi8-u',
@@ -345,3 +350,4 @@ our %fonts = (
   },
 );
 
+1;

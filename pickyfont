@@ -1,20 +1,28 @@
 #!/usr/bin/perl
-our $APP     = 'pickyfont';
-our $VERSION = '0.4';
+use vars qw($VERSION);
+my $APP  = 'pickyfont';
+$VERSION = '0.440';
 
 use strict;
-use Data::Dumper;
 use Picky::Fonts qw(getfonts setfont);
 use Pod::Usage;
+#use Data::Dumper;
+#$Data::Dumper::Terse     = 1;
+#$Data::Dumper::Indent    = 1;
+#$Data::Dumper::Useqq     = 1;
+#$Data::Dumper::Deparse   = 1;
+#$Data::Dumper::Quotekeys = 0;
+#$Data::Dumper::Sortkeys  = 1;
+
 
 my ($action, $font, $typeface) = @ARGV;
 $typeface = 'all' unless $typeface; # set normal,bold,italic to same font
 
 my $opts = {
-  list      => sub {getfonts();},
-  set       => sub {setfont($font, $typeface); exit 0;},
-  help      => sub {pod2usage(verbose=>1);},
-  man       => sub {pod2usage(verbose=>3);},
+  list      => sub { getfonts(); },
+  set       => sub { setfont($font, $typeface) and exit 0; },
+  help      => sub { pod2usage(verbose=>1); },
+  man       => sub { pod2usage(verbose=>3); },
 };
 
 # Due to how setfont() works, this is really not necessary
@@ -46,7 +54,7 @@ sub usage { pod2usage(verbose=>1) }
 
 =head1 NAME
 
-  pickyfont - Change terminal font on the fly
+pickyfont - Change terminal font on the fly
 
 =head1 DESCRIPTION
 
@@ -84,7 +92,7 @@ Simply do <pickyfont ter7> and you can lay back in the sofa chillin'.
 
 =head2 Typeface
 
-  Typeface can be any of normal, bold, italic, or simply 'all'
+Typeface, or attribute, is one of normal, bold, italic, or simply 'all'.
 
 =head3 Examples
 
@@ -94,16 +102,12 @@ This is what the author prefers.
   pickyfont set monte2 bold
   pickyfont set pro1   italic
 
-=back
-
 =head2  Arbitary fonts
 
   You can specifiy arbitary fonts using the following syntax:
 
   pickyfont lucidasanstypewriter-bold-24
   pickyfont 8x13
-
-=back
 
 =head1 CAVEATS
 
@@ -137,22 +141,27 @@ Console Pro. Not recommended for coding, though.
 
 =head1 AUTHOR
 
-Written by Magnus Woldrich.
+  Magnus Woldrich
+  CPAN ID: WOLDRICH
+  magnus@trapd00r.se
+  http://japh.se
 
 =head1 REPORTING BUGS
 
-Report bugs to trapd00r\@trapd00r.se
+<magnus@trapd00r.se>
 
-pickyfont homepage: http://github.com/trapd00r/pickyfont
+L<http://github.com/trapd00r/pickyfont/issues>
+
+pickyfont homepage: L<http://github.com/trapd00r/pickyfont>
 
 =head1 COPYRIGHT
 
-Copyright 2010 Magnus Woldrich.
-
-License: GPLv2.
+Copyright (C) 2010 Magnus Woldrich. All right reserved.
+This program is free software; you can redistribute it and/or modify it under
+the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-xlsfonts(1)
+L<xlsfonts(1)>
 
 =cut
