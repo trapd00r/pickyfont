@@ -1,0 +1,7 @@
+lib/Picky/Fonts.pm
+lib/Picky/t/main.t
+Makefile.PL
+MANIFEST			This list of files
+pickyfont
+README
+t/main.t
