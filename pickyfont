@@ -1,9 +1,9 @@
 #!/usr/bin/perl
+use strict;
 use vars qw($VERSION);
 my $APP  = 'pickyfont';
-$VERSION = '0.440';
+$VERSION = '0.441';
 
-use strict;
 use Picky::Fonts qw(getfonts setfont);
 use Pod::Usage;
 #use Data::Dumper;
@@ -115,7 +115,7 @@ There is no reliable way to get friendly font names from the X.org server.
 One could parse the output from xlsfonts, but that output could be insanely long
 and will only show the raw names and several duplicates as well.
 
-Therefore I see no other way then to keeping a (configuration)? file with more
+Therefore I see no other way than to keeping a (configuration)? file with more
 or less standard font mappings that most people would (in many cases, should)
 have installed, and let them pick from that.
 
@@ -133,7 +133,7 @@ more readable. No boldface here at all.
 The Monte Carlo font is awesome. It comes with just one size, but there's a bold
 version that works really well. This is what the author uses everyday.
 
-Other then that, there are some more or less good programming fonts in the
+Other than that, there are some more or less good programming fonts in the
 artwiz packages that you might like more.
 
 There's also only one font that supports all of codepage 437 - The Lucida
@@ -148,7 +148,7 @@ Console Pro. Not recommended for coding, though.
 
 =head1 REPORTING BUGS
 
-<magnus@trapd00r.se>
+L<magnus@trapd00r.se>
 
 L<http://github.com/trapd00r/pickyfont/issues>
 
@@ -156,7 +156,7 @@ pickyfont homepage: L<http://github.com/trapd00r/pickyfont>
 
 =head1 COPYRIGHT
 
-Copyright (C) 2010 Magnus Woldrich. All right reserved.
+Copyright (C) 2010, 2011 Magnus Woldrich. All right reserved.
 This program is free software; you can redistribute it and/or modify it under
 the same terms as Perl itself.
 
