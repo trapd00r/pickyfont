@@ -7,7 +7,18 @@ require Exporter;
 use strict;
 #use Data::Dumper;
 
-our(%fonts, %faces);
+my(%fonts, %faces);
+
+my %faces = (
+  normal => 710,
+  bold   => 711,
+  italic => 712,
+);
+
+# We can query the terminal for the current font(s) in use. This seems to only
+# work in a real XTerm, though:
+# echo -e '\e]50;?\a'; xxd
+# ^[]50;-windows-montecarlo-medium-r-normal--11-110-72-72-c-60-microsoft-cp1252^G
 
 sub getfonts {
   my %h;
@@ -32,27 +43,39 @@ sub setfont {
   }
   else { # The user might have supplied an arbitary font, lets try setting it
     # \e is a GNU thing.
-    printf("\033]710;%s\007", $font);
-    printf("\033]711;%s\007", $font);
-    printf("\033]712;%s\007", $font);
+    if($ENV{TERM} =~ m/screen/i) {
+      printf("\eP\e]710;%s\007\a\e\\", $font);
+      printf("\eP\e]711;%s\007\a\e\\", $font);
+      printf("\eP\e]712;%s\007\a\e\\", $font);
+    }
+    else {
+      printf("\e]710;%s\007", $font);
+      printf("\e]711;%s\007", $font);
+      printf("\e]712;%s\007", $font);
+    }
     return 0;
   }
 
   if(exists($faces{$face})) {
-    printf("\033]$faces{$face};%s\007", $font_str);
+    if($ENV{TERM} =~ m/screen/i) {
+      printf("\eP\033]$faces{$face};%s\007\a\e\\", $font_str);
+    }
+    else {
+      printf("\033]$faces{$face};%s\007", $font_str);
+    }
   }
   else {
-    printf("\033]710;%s\007", $font_str);
-    printf("\033]711;%s\007", $font_str);
-    printf("\033]712;%s\007", $font_str);
+    if($ENV{TERM} =~ m/screen/i) {
+      printf("\eP\e]$faces{$face};%s\007", $font_str);
+    }
+    else {
+      printf("\e]710;%s\007", $font_str);
+      printf("\e]711;%s\007", $font_str);
+      printf("\e]712;%s\007", $font_str);
+    }
   }
 }
 
-%faces = (
-  normal  => 710,
-  bold    => 711,
-  italic  => 712,
-);
 
 %fonts = (
   ter1    => {

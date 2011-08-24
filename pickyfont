@@ -2,21 +2,17 @@
 use strict;
 use vars qw($VERSION);
 my $APP  = 'pickyfont';
-$VERSION = '0.441';
+$VERSION = '0.450';
+
+use lib 'lib';
 
 use Picky::Fonts qw(getfonts setfont);
 use Pod::Usage;
-#use Data::Dumper;
-#$Data::Dumper::Terse     = 1;
-#$Data::Dumper::Indent    = 1;
-#$Data::Dumper::Useqq     = 1;
-#$Data::Dumper::Deparse   = 1;
-#$Data::Dumper::Quotekeys = 0;
-#$Data::Dumper::Sortkeys  = 1;
-
 
 my ($action, $font, $typeface) = @ARGV;
 $typeface = 'all' unless $typeface; # set normal,bold,italic to same font
+
+# XXX - GNU Screen / tmux
 
 my $opts = {
   list      => sub { getfonts(); },
@@ -35,11 +31,10 @@ if($action eq 'arb') {
   exit 0;
 }
 
-
 # Hereby the 'set' argument isn't necessary
 # setfont() will return if it's not a legal font
 if(defined($action)) {
-  if($action !~ /^(:?list|set|.?.?help)$/) {
+  if($action !~ /^(:?list|set|[-]*help)$/) {
     setfont($action, $font);
   }
 }
