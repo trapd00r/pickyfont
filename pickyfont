@@ -2,7 +2,7 @@
 use strict;
 use vars qw($VERSION);
 my $APP  = 'pickyfont';
-$VERSION = '0.451';
+$VERSION = '0.460';
 
 use lib 'lib';
 
@@ -11,8 +11,6 @@ use Pod::Usage;
 
 my ($action, $font, $typeface) = @ARGV;
 $typeface = 'all' unless $typeface; # set normal,bold,italic to same font
-
-# XXX - GNU Screen / tmux
 
 my $opts = {
   list      => sub { getfonts(); },
