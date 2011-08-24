@@ -2,7 +2,7 @@
 use strict;
 use vars qw($VERSION);
 my $APP  = 'pickyfont';
-$VERSION = '0.450';
+$VERSION = '0.451';
 
 use lib 'lib';
 

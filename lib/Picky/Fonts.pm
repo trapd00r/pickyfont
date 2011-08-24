@@ -9,7 +9,7 @@ use strict;
 
 my(%fonts, %faces);
 
-my %faces = (
+%faces = (
   normal => 710,
   bold   => 711,
   italic => 712,
