@@ -5,6 +5,7 @@ require Exporter;
 @EXPORT_OK = qw(setfont getfonts);
 
 use strict;
+use Carp;
 
 my(%fonts, %faces);
 
@@ -13,6 +14,7 @@ my(%fonts, %faces);
   bold   => 711,
   italic => 712,
 );
+
 
 # We can query the terminal for the current font(s) in use. This seems to only
 # work in a real XTerm, though:
@@ -43,24 +45,30 @@ sub setfont {
   else { # The user might have supplied an arbitary font, lets try setting it
     # \e is a GNU thing.
     if( ($ENV{TERM} =~ m/screen/i) and (!exists($ENV{TMUX})) ) {
-      printf("\eP\e]710;%s\007\a\e\\", $font);
-      printf("\eP\e]711;%s\007\a\e\\", $font);
-      printf("\eP\e]712;%s\007\a\e\\", $font);
+      printf("\eP\e]$faces{$face};%s\007\a\e\\", $font);
     }
     # $TMUX ought to be set only when queried from inside tmux. Please do not
     # set it outside of tmux.
     # On GNU/Linux it might look like so: /tmp/tmux-1000/default,8295,1
     elsif($ENV{TMUX} =~ m/tmux/) {
-      printf("\ePtmux;\e\e]710;%s\007\033\\", $font);
-      printf("\ePtmux;\e\e]711;%s\007\033\\", $font);
-      printf("\ePtmux;\e\e]712;%s\007\033\\", $font);
+      printf("\ePtmux;\e\e]$faces{$face};%s\007\033\\", $font);
     }
     else {
-      printf("\e]710;%s\007", $font);
-      printf("\e]711;%s\007", $font);
-      printf("\e]712;%s\007", $font);
+      if($ENV{TERM} =~ m/^xterm/) {
+        printf("\e]50;%s\007", $font);
+      }
+      else {
+        printf("\e]710;%s\007", $font);
+        printf("\e]711;%s\007", $font);
+        printf("\e]712;%s\007", $font);
+      }
     }
-    return 0;
+    return;
+  }
+
+  if($ENV{TERM} =~ m/^xterm/) {
+    printf("\e]50;%s\007", $font);
+    return;
   }
 
   if(exists($faces{$face})) {
